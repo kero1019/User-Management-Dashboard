@@ -14,9 +14,9 @@ export default function Table(props: tabelProps) {
             user.username.toLowerCase().includes(search.toLowerCase())
     );
     return (
-        <div className="flex  mt-10">
-            <div className=" w-full shadow-lg rounded-xl overflow-hidden">
-                <table className="min-w-full text-sm text-left border-collapse">
+        <div className="flex  mt-10 ">
+            <div className="overflow-x-auto w-full shadow-lg rounded-xl ">
+                <table className="min-w-full text-sm text-left border-collapse overflow-hidden">
                     <thead className="bg-gray-100 text-gray-700 uppercase text-sm font-semibold">
                         <tr>
                             <th className="px-6 py-3">Name</th>
