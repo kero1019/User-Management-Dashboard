@@ -1,4 +1,3 @@
-import React from 'react'
 import type User from '../../Types/User'
 import { useNavigate } from 'react-router-dom';
 
