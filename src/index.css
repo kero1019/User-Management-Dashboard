@@ -9,10 +9,19 @@
 
 body{
   margin:0;
-  padding:0;
   box-sizing: border-box;
   background-color: var(--backgroundColor);
-  padding:0 50px ;
+  padding:0 40px ;
+}
+@media (max-width: 768px) {
+  body {
+    padding: 0 20px;
+  }
+}
+@media (max-width: 425px) {
+  body {
+    padding: 0 10px;
+  }
 }
 
 .loader {
