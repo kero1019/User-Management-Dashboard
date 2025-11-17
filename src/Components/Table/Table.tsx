@@ -1,11 +1,11 @@
 import type User from '../../Types/User'
 import { useNavigate } from 'react-router-dom';
 
-interface tabelProps {
+interface tableProps {
     users: User[];
     search: string;
 }
-export default function Table(props: tabelProps) {
+export default function Table(props: tableProps) {
     const { users, search } = props;
     const navigate = useNavigate();
     const filteredUsers = users.filter(

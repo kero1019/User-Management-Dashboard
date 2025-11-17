@@ -11,17 +11,18 @@ export default function UserDetails() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        const fetchUser = async () => {
+        const getUser = async () => {
             try {
                 const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
                 setUser(response.data);
-            } catch (err: any) {
+            } catch (error: any) {
                 setError("Failed to fetch user data");
+                console.error("ERROR message is ==>", error.message);
             } finally {
                 setLoading(false);
             }
         };
-        fetchUser();
+        getUser();
     }, [id]);
 
     if (loading) return <div>Loading...</div>;
