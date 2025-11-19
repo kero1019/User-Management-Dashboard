@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from '../Components/Table/Table';
 import type User from '../Types/User';
+import SearchComponent from '../Components/SearchComponent';
 export default function UserList() {
     const [users, setUsers] = useState<User[]>([]);
     const [error, setError] = useState<string>("");
@@ -13,7 +14,7 @@ export default function UserList() {
             try {
                 const response = await axios.get(`https://jsonplaceholder.typicode.com/users`);
                 setUsers(response.data)
-            } catch (error: any) {
+            } catch (error: any) { // Error here with typscript
                 console.error("ERROR message is ==>", error.message);
                 setError("Failed to load users. Please try again later.")
             } finally {
@@ -51,19 +52,12 @@ export default function UserList() {
         <div style={{ backgroundColor: "var(--secondBackgroundColor)" }} className="min-h-screen p-4 md:p-10 lg:p-20">
             <h1 className='text-3xl sm:text-4xl md:text-5xl font-bold mb-6 md:mb-10 text-center md:text-left'>Users</h1>
 
-            <div className="flex flex-col sm:flex-row sm:items-center mb-6 gap-4 bg-gray-200 px-4 py-2 rounded-2xl ">
-                <input
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className='flex-1 px-4 py-2 focus:outline-none'
-                    type="text"
-                    placeholder="Search by name, username... 🔍"
-                />
-
-            </div>
+            {/* Search */}
+            <SearchComponent search={search} setSearch={setSearch} />
 
             {/* Table Data */}
-            <Table users={users} search={search} />
+            <Table users={users} search={search} searchFields={["name"]} />
+            <Table users={users} search={search} searchFields={["email", "username"]} />
         </div>
     )
 }
